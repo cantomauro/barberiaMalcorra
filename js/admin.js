@@ -5,6 +5,17 @@ $(function(){
   // 1) Recuperar el array de citas guardado (o un array vacío)
   let citas = JSON.parse(localStorage.getItem('citas')) || [];
 
+  /**
+   * Convierte una cita a un timestamp para comparar.
+   * Espera cita.fechaRaw = "dd-mm-yy" y cita.hora = "HH:MM"
+   */
+  function citaToTimestamp(cita) {
+    const [d, m, a] = cita.fechaRaw.split('-').map(n => parseInt(n, 10));
+    const [hh, mm] = cita.hora.split(':').map(n => parseInt(n, 10));
+    // Mes en Date es 0-based:
+    return new Date(a, m - 1, d, hh, mm).getTime();
+  }
+
   // 2) Función para renderizar la tabla
   function renderTabla() {
     const $tbody = $('#tablaCitas tbody');
@@ -33,6 +44,12 @@ $(function(){
     // Captura el índice y abre el modal
     deleteIndex = $(this).data('index');
     deleteModal.show();
+  });
+
+  $('#sortRecentBtn').on('click', function(){
+    // Orden ascendente por timestamp: la cita más próxima primero
+    citas.sort((a, b) => citaToTimestamp(a) - citaToTimestamp(b));
+    renderTabla();
   });
 
 
