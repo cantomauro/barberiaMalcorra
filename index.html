@@ -94,6 +94,32 @@
   </div>
 </div>
 
+<!-- Modal de login de administrador -->
+<div class="modal fade" id="adminLoginModal" tabindex="-1" aria-labelledby="adminLoginLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="adminLoginForm">
+        <div class="modal-header">
+          <h5 id="adminLoginLabel" class="modal-title">Acceso Administrador</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="adminPassword" class="form-label">Contraseña</label>
+            <input type="password" id="adminPassword" class="form-control" required autofocus>
+          </div>
+          <div id="adminLoginError" class="text-danger small d-none">
+            Contraseña incorrecta.
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Ingresar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <!-- jQuery: dependencias de jQuery UI y tu código -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

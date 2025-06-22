@@ -138,12 +138,28 @@ $(function(){
   });
 
   // Botón Administrar
-  $('#adminBtn').on('click', function() {
-    const pwd = prompt('Introduce la contraseña de administrador:');
+  // 👇 Modal de login de administrador
+  const adminLoginModal = new bootstrap.Modal(document.getElementById('adminLoginModal'));
+
+  // Al pulsar el botón Administrar, mostramos el modal
+  $('#adminBtn').on('click', function(){
+    // Limpia campo y errores
+    $('#adminPassword').val('');
+    $('#adminLoginError').addClass('d-none');
+    adminLoginModal.show();
+  });
+
+  // Manejo del submit del formulario de login
+  $('#adminLoginForm').on('submit', function(e){
+    e.preventDefault();
+    const pwd = $('#adminPassword').val();
     if (pwd === 'barber123') {
+      adminLoginModal.hide();
       window.location.href = 'admin.html';
     } else {
-      alert('🔒 Contraseña incorrecta');
+      // Muestra mensaje de error
+      $('#adminLoginError').removeClass('d-none');
+      $('#adminPassword').focus().select();
     }
   });
 });

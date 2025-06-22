@@ -280,3 +280,44 @@ textarea {
 }
 
 
+/* RESPONSIVE
+/* Responsive: apilar calendario y formulario en pantallas <768px */
+@media (max-width: 768px) {
+  /* La grilla de Bootstrap .row .col-md-6 deja de aplicar col-md-6 */
+  .row.g-4 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* igual que g-4 */
+  }
+  .row.g-4 > .col-md-6 {
+    width: 100%;
+  }
+}
+
+/* Botones full-width en móvil */
+@media (max-width: 576px) {
+  /* Administrar / Salir en header: ocupan toda la fila */
+  .btn-wrapper {
+    width: 100% !important;
+  }
+  .btn-wrapper .btn {
+    width: 100%;
+  }
+
+  /* Botones principales (Reservar, Confirmar, etc.) */
+  button.btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .modal-dialog {
+    max-width: 95%;
+    margin: 1.5rem auto;
+  }
+}
+
+
+
+
