@@ -58,6 +58,8 @@ $(function(){
 
   // Maneja clic en “Salir”
   $('#exitBtn').on('click', function(){
+    const exitoTurnoModal = new bootstrap.Modal(document.getElementById('exitoTurnoModal'));
+    exitoTurnoModal.show();
     if (confirm('¿Estás seguro que deseas salir del panel?')) {
       window.location.href = 'index.html';
     }
@@ -72,6 +74,10 @@ $(function(){
       deleteIndex = null;
     }
     deleteModal.hide();
+    const borradoExitosoModal = new bootstrap.Modal(document.getElementById('borradoExitosoModal'));
+    borradoExitosoModal.show();
+    $('#ok-Btn').on('click', function() {
+      borradoExitosoModal.hide();
+  })
   });
-
 });

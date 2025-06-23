@@ -275,7 +275,7 @@ textarea {
 .ui-datepicker .ui-datepicker-current-day a,
 .ui-datepicker .ui-datepicker-current-day span,
 .ui-datepicker .ui-state-active a {
-  background: #b3d4fc !important;
+  background: rgba(179, 212, 252, 0.54) !important;
   color: #222 !important;
 }
 

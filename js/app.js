@@ -124,21 +124,25 @@ $(function(){
     const citas = JSON.parse(localStorage.getItem('citas')) || [];
     citas.push(pendingCita);
     localStorage.setItem('citas', JSON.stringify(citas));
-    alert(`¡Turno confirmado para ${pendingCita.fechaConDia} a las ${pendingCita.hora}!`);
     confirmModal.hide();
-
-    // 1) Programa la selección de hoy (re-aplica la clase ui-state-active)
-    $dp.datepicker('setDate', new Date());
-    // 2) Refresca el calendario para que use beforeShowDay y aplique estilos
-    $dp.datepicker('refresh');
-    // 3) Limpia el formulario y el span
-    $('#reservaForm')[0].reset();
-    $('#fechaSeleccionada').text('–');
-    pendingCita = null;
+    const exitoTurnoModal = new bootstrap.Modal(document.getElementById('exitoTurnoModal'));
+    exitoTurnoModal.show();
+    $('#okBtn').on('click', function() {
+      exitoTurnoModal.hide();
+      // 1) Programa la selección de hoy (re-aplica la clase ui-state-active)
+      $dp.datepicker('setDate', new Date());
+      // 2) Refresca el calendario para que use beforeShowDay y aplique estilos
+      $dp.datepicker('refresh');
+      // 3) Limpia el formulario y el span
+      $('#reservaForm')[0].reset();
+      $('#fechaSeleccionada').text('–');
+      pendingCita = null;
+    })
+  });
   });
 
   // Botón Administrar
-  // 👇 Modal de login de administrador
+  //  Modal de login de administrador
   const adminLoginModal = new bootstrap.Modal(document.getElementById('adminLoginModal'));
 
   // Al pulsar el botón Administrar, mostramos el modal
@@ -162,4 +166,3 @@ $(function(){
       $('#adminPassword').focus().select();
     }
   });
-});
