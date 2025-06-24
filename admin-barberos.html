@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Administración de Barberos - Agenda Barbería</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome para iconos -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <!-- Mis estilos -->
+  <link rel="stylesheet" href="css/styles.css?v=2">
+
+  <!-- Verificar autenticación -->
+  <script>
+    if (!localStorage.getItem('authenticated')) {
+      window.location.href = 'login.html';
+    }
+  </script>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="img/logo.png" alt="Logo" width="30" height="30" class="me-2">
+        <span>Agenda Barbería</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Agenda</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Administrar Barberos</a></li>
+        </ul>
+        <button id="logoutBtn" class="btn btn-outline-light btn-sm">Cerrar sesión</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container py-4">
+    <!-- Título y botón nuevo barbero -->
+    <div class="row mb-4">
+      <div class="col-md-8">
+        <h1 class="h2">
+          <i class="fas fa-cut me-2"></i>
+          Administración de Barberos
+        </h1>
+        <p class="text-muted">Gestiona los barberos de tu barbería</p>
+      </div>
+      <div class="col-md-4 text-end">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#barberoModal">
+          <i class="fas fa-plus me-2"></i>
+          Nuevo Barbero
+        </button>
+      </div>
+    </div>
+
+    <!-- Alerta de mensajes -->
+    <div id="alertContainer"></div>
+
+    <!-- Tabla de barberos -->
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">
+          <i class="fas fa-list me-2"></i>
+          Lista de Barberos
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="barberosTableBody">
+              <tr>
+                <td colspan="4" class="text-center">
+                  <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+                  Cargando barberos...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal para agregar/editar barbero -->
+  <div class="modal fade" id="barberoModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="barberoModalTitle">
+            <i class="fas fa-user-plus me-2"></i>
+            Nuevo Barbero
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <form id="barberoForm">
+          <div class="modal-body">
+            <input type="hidden" id="barberoId">
+            
+            <div class="mb-3">
+              <label for="barberoNombre" class="form-label">
+                <i class="fas fa-user me-1"></i>
+                Nombre completo *
+              </label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="barberoNombre" 
+                required 
+                maxlength="100"
+                placeholder="Ej: Carlos Mendez">
+            </div>
+            
+            <div class="mb-3">
+              <label for="barberoEspecialidad" class="form-label">
+                <i class="fas fa-scissors me-1"></i>
+                Especialidad
+              </label>
+              <select class="form-select" id="barberoEspecialidad">
+                <option value="">Selecciona una especialidad</option>
+                <option value="Corte clásico">Corte clásico</option>
+                <option value="Barba y bigote">Barba y bigote</option>
+                <option value="Corte moderno">Corte moderno</option>
+                <option value="Corte infantil">Corte infantil</option>
+                <option value="Tratamientos capilares">Tratamientos capilares</option>
+                <option value="Estilismo">Estilismo</option>
+              </select>
+              <div class="form-text">
+                <small class="text-muted">Opcional - puedes dejarlo vacío</small>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-save me-2"></i>
+              <span id="barberoSubmitText">Guardar</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de confirmación de eliminación -->
+  <div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            Confirmar eliminación
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>¿Estás seguro de que deseas eliminar al barbero <strong id="deleteBarberoName"></strong>?</p>
+          <div class="alert alert-warning">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>Atención:</strong> Esta acción eliminará también todas las citas asociadas a este barbero y no se puede deshacer.
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+            <i class="fas fa-trash me-2"></i>
+            Eliminar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/admin-barberos.js"></script>
+
+  <script>
+    // Logout
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('authenticated');
+      window.location.href = 'login.html';
+    });
+  </script>
+</body>
+</html>
