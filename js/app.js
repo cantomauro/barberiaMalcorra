@@ -37,14 +37,14 @@ function formatFechaConDia(fechaStr) {
 }
 
 $(function(){
-  // Franjas horarias disponibles
+  // Horas disponibles
   const timesList = [
     '09:00','09:30','10:00','10:30'
   ];
 
   let selectedRawFecha = null;
 
-  // Actualiza el <select> de horas quitando las ya reservadas
+  // Actualiza el <select> de horas sacando las que ya están reservadas
   function updateHorasDisabled(fechaRaw) {
     const citas = JSON.parse(localStorage.getItem('citas')) || [];
     const ocupadas = citas.filter(c => c.fechaRaw === fechaRaw).map(c => c.hora);
@@ -60,7 +60,7 @@ $(function(){
   // Configuración en español
   $.datepicker.setDefaults($.datepicker.regional['es']);
 
-  // Inicializa el datepicker
+  // Inicializa el calendario (datepicker)
   const $dp = $('#datepicker').datepicker({
     minDate: 0,
     dateFormat: 'dd-mm-yy',
@@ -129,13 +129,14 @@ $(function(){
     exitoTurnoModal.show();
     $('#okBtn').on('click', function() {
       exitoTurnoModal.hide();
-      // 1) Programa la selección de hoy (re-aplica la clase ui-state-active)
+      // Programa la selección de hoy
       $dp.datepicker('setDate', new Date());
-      // 2) Refresca el calendario para que use beforeShowDay y aplique estilos
+      // Refresca el calendario
       $dp.datepicker('refresh');
-      // 3) Limpia el formulario y el span
+      // Limpia el formulario y el span
       $('#reservaForm')[0].reset();
       $('#fechaSeleccionada').text('–');
+      //No se resetea la hora
       pendingCita = null;
     })
   });
@@ -144,8 +145,6 @@ $(function(){
   // Botón Administrar
   //  Modal de login de administrador
   const adminLoginModal = new bootstrap.Modal(document.getElementById('adminLoginModal'));
-
-  // Al pulsar el botón Administrar, mostramos el modal
   $('#adminBtn').on('click', function(){
     // Limpia campo y errores
     $('#adminPassword').val('');
@@ -161,8 +160,16 @@ $(function(){
       adminLoginModal.hide();
       window.location.href = 'admin.html';
     } else {
-      // Muestra mensaje de error
       $('#adminLoginError').removeClass('d-none');
       $('#adminPassword').focus().select();
     }
   });
+
+// Cuando se muestre el modal, ponemos la imagen correcta
+var imageModalEl = document.getElementById('imageModal');
+imageModalEl.addEventListener('show.bs.modal', function (event) {
+  var trigger = event.relatedTarget;              // el <a> que disparó el modal
+  var src = trigger.getAttribute('data-bs-src');  // obtenemos la ruta de la imagen
+  var modalImg = imageModalEl.querySelector('#modalImage');
+  modalImg.src = src;                              // seteamos el src en el <img> del modal
+});

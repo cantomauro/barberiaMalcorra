@@ -2,7 +2,7 @@ $(function(){
   let deleteIndex = null;
   const deleteModal = new bootstrap.Modal(document.getElementById('deleteConfirmModal'));
 
-  // 1) Recuperar el array de citas guardado (o un array vacío)
+  // Recupera el array de citas guardado o un array vacío
   let citas = JSON.parse(localStorage.getItem('citas')) || [];
 
   /**
@@ -16,7 +16,7 @@ $(function(){
     return new Date(a, m - 1, d, hh, mm).getTime();
   }
 
-  // 2) Función para renderizar la tabla
+  // Función para renderizar la tabla
   function renderTabla() {
     const $tbody = $('#tablaCitas tbody');
     $tbody.empty(); // Limpiamos filas anteriores
@@ -58,12 +58,16 @@ $(function(){
 
   // Maneja clic en “Salir”
   $('#exitBtn').on('click', function(){
-    const exitoTurnoModal = new bootstrap.Modal(document.getElementById('exitoTurnoModal'));
-    exitoTurnoModal.show();
-    if (confirm('¿Estás seguro que deseas salir del panel?')) {
+    const exitConfirmModal = new bootstrap.Modal(document.getElementById('exitConfirmModal'));
+    exitConfirmModal.show();
+    $('#confirmExitBtn').on('click', function(){
+      exitConfirmModal.hide();
       window.location.href = 'index.html';
-    }
+    })
   });
+
+
+
 
   $('#confirmDeleteBtn').on('click', function(){
     // Si hay un índice, borramos y re-renderizamos

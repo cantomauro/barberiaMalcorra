@@ -245,33 +245,24 @@ textarea {
   h3 {
     page-break-after: avoid;
   }
-
-  /* css/styles.css */
-
 }
 
 /* Mini–contenedor fijo para botones en la cabecera */
 .btn-wrapper {
-  display: flex;               /* flex interno para centrar */
-  justify-content: center;     /* centra botón horizontal */
-  align-items: center;         /* centra botón vertical */
-  width: 8rem;                 /* ancho fijo; ajusta a “Administrar” */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8rem;
 }
 
-/*!* Resalta hoy y la fecha seleccionada en amarillo *!*/
-/*.ui-datepicker .ui-datepicker-today a,*/
-/*.ui-datepicker .ui-state-active a {*/
-/*  background: #c6a92c !important;  !* amarillo *!*/
-/*  color: #000 !important;*/
-/*}*/
 
-/* Fecha completamente ocupada en rojo */
+/* Fecha completamente ocupada en rojo DE MOMENTO NO FUNCA */
 .ui-datepicker .fully-booked a {
   background: #dc3545 !important; /* rojo */
   color: #fff !important;
 }
 
-/* Resalta en amarillo el día actual (ya sea enlace o span) y la fecha seleccionada */
+/* Resalta el día actual y la fecha seleccionada */
 .ui-datepicker .ui-datepicker-current-day a,
 .ui-datepicker .ui-datepicker-current-day span,
 .ui-datepicker .ui-state-active a {
@@ -280,23 +271,20 @@ textarea {
 }
 
 
-/* RESPONSIVE
-/* Responsive: apilar calendario y formulario en pantallas <768px */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  /* La grilla de Bootstrap .row .col-md-6 deja de aplicar col-md-6 */
   .row.g-4 {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* igual que g-4 */
+    gap: 1.5rem;
   }
   .row.g-4 > .col-md-6 {
     width: 100%;
   }
 }
 
-/* Botones full-width en móvil */
+/* Botones full-width en celular */
 @media (max-width: 576px) {
-  /* Administrar / Salir en header: ocupan toda la fila */
   .btn-wrapper {
     width: 100% !important;
   }
@@ -318,6 +306,43 @@ textarea {
   }
 }
 
+/* Sección Cortes: flexbox de 2 columnas en desktop, 1 en móvil */
+.cortes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
 
+/* Ajusta el tamaño de las cajas de cortes a 150×150 */
+.corte-box {
+  width: 150px;    /* antes 200px */
+  height: 150px;   /* antes 200px */
+}
 
+/* Asegura que la imagen rellene la caja sin salirse */
+.corte-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
 
+.cortes-container .corte {
+  flex: 1 1 calc(50% - 1rem);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.cortes-container .corte img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* En pantallas muy pequeñas, una sola columna */
+@media (max-width: 576px) {
+  .cortes-container .corte {
+    flex: 1 1 100%;
+  }
+}
