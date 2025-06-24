@@ -140,7 +140,12 @@ $(function(){
       pendingCita = null;
     })
   });
+
+  //Boton de Reservas
+  $('#reservasBtn').on('click', function(){
+    window.location.href = 'reservas.html';
   });
+
 
   // Botón Administrar
   //  Modal de login de administrador
@@ -172,4 +177,6 @@ imageModalEl.addEventListener('show.bs.modal', function (event) {
   var src = trigger.getAttribute('data-bs-src');  // obtenemos la ruta de la imagen
   var modalImg = imageModalEl.querySelector('#modalImage');
   modalImg.src = src;                              // seteamos el src en el <img> del modal
+});
+
 });
