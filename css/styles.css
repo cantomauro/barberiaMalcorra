@@ -1,297 +1,278 @@
-/*! HTML5 Boilerplate v9.0.1 | MIT License | https://html5boilerplate.com/ */
-
-/* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
-
 html {
   color: #222;
   font-size: 1em;
   line-height: 1.4;
 }
 
-/*
- * Remove text-shadow in selection highlight:
- * https://twitter.com/miketaylr/status/12228805301
- *
- * Customize the background color to match your design.
- */
-
-::-moz-selection {
-  background: #b3d4fc;
-  text-shadow: none;
+.main-container {
+  display: flex;
+  gap: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
-::selection {
-  background: #b3d4fc;
-  text-shadow: none;
+.cortes-section {
+  flex: 1;
 }
 
-/*
- * A better looking default horizontal rule
- */
+.cortes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
 
-hr {
+.corte-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.corte-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
   display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
 }
 
-/*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-  vertical-align: middle;
+.barberos-section {
+  flex: 1;
 }
 
-/*
- * Remove default fieldset styles.
- */
-
-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
+.acordeon-barberos {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-/*
- * Allow only vertical resizing of textareas.
- */
+.acordeon-item {
+  border-bottom: 1px solid #e0e0e0;
+}
 
-textarea {
+.acordeon-item:last-child {
+  border-bottom: none;
+}
+
+.acordeon-titulo {
+  width: 100%;
+  background: #f8f9fa;
+  border: none;
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.acordeon-titulo:hover {
+  background: #e9ecef;
+}
+
+.acordeon-titulo.active {
+  background: #6c757d;
+  color: white;
+}
+
+.acordeon-cuerpo {
+  max-height: 0;
+  overflow: hidden;
+  background: white;
+}
+
+.acordeon-cuerpo.active {
+  max-height: 400px;
+}
+
+.barbero-info {
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.barbero-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.barbero-details {
+  flex: 1;
+}
+
+.barbero-descripcion {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.barbero-stats {
+  font-size: 0.9rem;
+}
+
+.barbero-stats p {
+  margin-bottom: 0.5rem;
+}
+
+.contacto-section {
+  padding: 3rem 0;
+  border-radius: 15px;
+  margin-top: 4rem;
+}
+
+.contacto-form-container {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.contacto-form .form-control {
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+
+.contacto-form .form-control:focus {
+  border-color: black;
+  outline: none;
+}
+
+.contacto-form .form-label {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 0.5rem;
+}
+
+.contacto-form textarea {
+  min-height: 120px;
   resize: vertical;
 }
 
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
-
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
-/*
- * Hide visually and from screen readers
- */
-
-.hidden,
-[hidden] {
-  display: none !important;
+.contacto-form .btn-primary {
+  background: darkgray;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
-/*
- * Hide only visually, but have it available for screen readers:
- * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- *
- * 1. For long content, line feeds are not interpreted as spaces and small width
- *    causes content to wrap 1 word per line:
- *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
- */
-
-.visually-hidden {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  /* 1 */
+.contacto-form .btn-primary:hover {
+  background: black;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
 }
 
-/*
- * Extends the .visually-hidden class to allow the element
- * to be focusable when navigated to via the keyboard:
- * https://www.drupal.org/node/897638
- */
+.footer {
+  background: #343a40;
+  color: #ffffff;
+  padding: 2rem 0;
+  margin-top: 4rem;
+}
 
-.visually-hidden.focusable:active,
-.visually-hidden.focusable:focus {
-  clip: auto;
-  height: auto;
+.footer-title {
+  font-size: 1.5rem;
+  font-weight: 700;
   margin: 0;
-  overflow: visible;
-  position: static;
-  white-space: inherit;
-  width: auto;
+  color: #ffffff;
 }
 
-/*
- * Hide visually and from screen readers, but maintain layout
- */
-
-.invisible {
-  visibility: hidden;
+.footer-contact {
+  font-size: 0.95rem;
 }
 
-/*
- * Clearfix: contain floats
- *
- * The use of `table` rather than `block` is only necessary if using
- * `::before` to contain the top-margins of child elements.
- */
-
-.clearfix::before,
-.clearfix::after {
-  content: "";
-  display: table;
+.footer-icon {
+  margin-right: 0.5rem;
+  font-style: normal;
 }
 
-.clearfix::after {
-  clear: both;
+.footer-link {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
+.footer-copyright {
+  font-size: 0.9rem;
+  color: #adb5bd;
 }
 
-@media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */
-}
-
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   https://www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
-
-@media print {
-  *,
-  *::before,
-  *::after {
-    background: #fff !important;
-    color: #000 !important;
-    /* Black prints faster */
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-
-  a[href]::after {
-    content: " (" attr(href) ")";
-  }
-
-  abbr[title]::after {
-    content: " (" attr(title) ")";
-  }
-
-  /*
-   * Don't show links that are fragment identifiers,
-   * or use the `javascript:` pseudo protocol
-   */
-  a[href^="#"]::after,
-  a[href^="javascript:"]::after {
-    content: "";
-  }
-
-  pre {
-    white-space: pre-wrap !important;
-  }
-
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
-}
-
-/* Mini–contenedor fijo para botones en la cabecera */
-.btn-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 8rem;
-}
-
-/* Fecha completamente ocupada en rojo DE MOMENTO NO FUNCA */
-.ui-datepicker .fully-booked a {
-  background: #dc3545 !important; /* rojo */
-  color: #fff !important;
-}
-
-/* Resalta el día actual y la fecha seleccionada */
-.ui-datepicker .ui-datepicker-current-day a,
-.ui-datepicker .ui-datepicker-current-day span,
-.ui-datepicker .ui-state-active a {
-  background: rgba(179, 212, 252, 0.54) !important;
-  color: #222 !important;
-}
-
-/* RESPONSIVE */
 @media (max-width: 768px) {
-  .row.g-4 {
-    display: flex;
+  .main-container {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
   }
-  .row.g-4 > .col-md-6 {
-    width: 100%;
+
+  .cortes-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .corte-img {
+    height: 200px;
+  }
+
+  .barbero-info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .barbero-img {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
+
+  .contacto-form-container {
+    padding: 1.5rem;
+  }
+
+  .footer {
+    text-align: center;
+  }
+
+  .footer-title {
+    margin-bottom: 1rem;
+  }
+
+  .footer-contact {
+    margin-bottom: 1rem;
   }
 }
 
-/* Botones full-width en celular */
 @media (max-width: 576px) {
-  .btn-wrapper {
-    width: 100% !important;
-  }
-  .btn-wrapper .btn {
-    width: 100%;
+  .cortes-grid {
+    grid-template-columns: 1fr;
   }
 
-  /* Botones principales (Reservar, Confirmar, etc.) */
-  button.btn {
-    width: 100%;
-    margin-bottom: 0.5rem;
+  .corte-img {
+    height: 180px;
+  }
+
+  .contacto-section {
+    padding: 2rem 0;
+  }
+
+  .contacto-form-container {
+    padding: 1rem;
+  }
+
+  .footer {
+    padding: 1.5rem 0;
+  }
+
+  .footer-title {
+    font-size: 1.3rem;
   }
 }
 
@@ -300,129 +281,4 @@ textarea {
     max-width: 95%;
     margin: 1.5rem auto;
   }
-}
-
-/* Altura de pantalla completa para cada sección */
-.pantalla {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100vh;
-  padding: 2rem;
-}
-
-/* Layout principal de calendario + formulario */
-.flex-dos-columnas {
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  padding: 2rem;
-  flex-wrap: wrap;
-}
-
-/* Caja interna */
-.caja {
-  flex: 1;
-  min-width: 300px;
-}
-
-/* Header */
-.flex-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Contenedor principal centrado */
-.main-flex {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-  padding: 0 2rem 4rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Contenedor de calendario y formulario */
-.reserva-container {
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-/* Columnas internas */
-.reserva-col {
-  flex: 1;
-  min-width: 300px;
-}
-
-/* Formulario vertical */
-.form-flex {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Contacto */
-.contacto-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid #ccc;
-}
-
-/* Info */
-.info-contacto {
-  font-size: 1rem;
-}
-
-/* Enlaces */
-.info-contacto a {
-  text-decoration: none;
-  color: #0d6efd;
-}
-
-/* Mapa */
-.mapa-container iframe {
-  width: 100%;
-  height: 300px;
-  border-radius: 8px;
-}
-
-title-section,
-.admin-section {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo-img {
-  width: 50px;
-  height: 50px;
-}
-
-.user-img {
-  width: 40px;
-  height: 40px;
-}
-
-.title-section {
-  display: flex !important;
-  align-items: center !important;
-  gap: 15px;
-  flex-direction: row !important;
-}
-
-.title-section h1 {
-  margin: 0 !important;
-  display: inline-block !important;
-}
-
-.logo-img {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-  flex-shrink: 0;
 }

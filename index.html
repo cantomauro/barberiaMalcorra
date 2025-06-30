@@ -4,188 +4,250 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Agenda Barbería</title>
+  <title>Barbería Malcorra</title>
 
-  <!-- Bootstrap CSS (solo para componentes, no grillas) -->
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- jQuery UI CSS (datepicker) -->
-  <link href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" rel="stylesheet">
-
-  <!-- Estilos personalizados -->
-  <link rel="stylesheet" href="css/styles.css?v=3">
+  <!-- Mis estilos -->
+  <link rel="stylesheet" href="css/styles.css?v=4">
 </head>
 
 <body>
-  <header class="bg-dark text-white py-3 mb-4">
-    <div class="flex-header container">
-      <!-- Logo al lado del título -->
-      <div class="title-section">
-        <img src="img/logo.png" alt="Logo de la barbería" class="logo-img">
-        <h1 class="h3 m-0">Agenda Barbería</h1>
-      </div>
-
-      <!-- Usuario a la izquierda del botón -->
-      <div class="admin-section">
-
-        <button id="adminBtn" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
-          data-bs-target="#adminLoginModal"><img src="img/user.png" alt="Usuario Administrador"
-            class="user-img">Administrar</button>
-      </div>
+  <header class="bg-dark text-white py-4">
+    <div class="container text-center">
+      <h1 class="display-4 m-0">Barbería Malcorra</h1>
     </div>
   </header>
 
-  <main class="main-flex">
-    <!-- Calendario y Formulario -->
-    <section class="reserva-container">
-      <div class="reserva-col">
-        <h2>1. Elige fecha</h2>
-        <div id="datepicker"></div>
-        <p class="mt-2">Fecha seleccionada: <span id="fechaSeleccionada">–</span></p>
+  <main class="container">
+    <!-- sobre nosotros -->
+    <section class="row mt-5 mb-5">
+      <div class="col-md-6">
+        <img
+          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp1946307.jpg&f=1&nofb=1&ipt=2a1659db222061ce665ed4863f143c1f719f07daac2bdf6ccd6e8ed730962950"
+          alt="Local Barbería Malcorra" class="img-fluid rounded shadow"
+          style="width: 100%; height: 400px; object-fit: cover;">
       </div>
-
-      <div class="reserva-col">
-        <h2>2. Reserva tu turno</h2>
-        <form id="reservaForm" class="form-flex">
-          <div class="mb-3">
-            <label for="hora" class="form-label">Hora</label>
-            <select id="hora" class="form-select" required>
-              <option value="" disabled selected>Seleccioná una hora</option>
-              <option>09:00</option>
-              <option>09:30</option>
-              <option>10:00</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" id="nombre" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label for="contacto" class="form-label">Teléfono o email</label>
-            <input type="text" id="contacto" class="form-control" required>
-          </div>
-          <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
-            data-bs-target="#confirmModal">Reservar</button>
-        </form>
+      <div class="col-md-6 d-flex flex-column justify-content-center">
+        <h2 class="mb-4">Sobre nosotros</h2>
+        <p class="lead mb-3">
+          En Barbería Malcorra, nos dedicamos a crear experiencias únicas de cuidado masculino,
+          combinando técnicas tradicionales con las últimas tendencias en estilos modernos.
+        </p>
+        <p class="lead mb-4">
+          Nuestro equipo de barberos profesionales está comprometido en brindar un servicio
+          excepcional, donde cada cliente se sienta valorado y salga con un look que refleje
+          su personalidad y estilo de vida. NO aceptamos negros ni tarjetas de crédito.
+        </p>
       </div>
     </section>
 
-    <!-- Sección de contacto con mapa -->
-    <section class="contacto-container">
-      <div class="info-contacto">
-        <h2>Contacto</h2>
-        <p><strong>Dirección:</strong> Av. Brasil 2345, Montevideo Uruguay</p>
-        <p><strong>Teléfono:</strong> <a href="tel:+59894488668">+598 94 488 668</a></p>
-        <p><strong>Email:</strong> <a href="mailto: Consultas@malcorra.com">Consultas@malcorra.com</a></p>
-        <p><strong>Horario:</strong> Lunes a Sábado de 8:00 a 20:00</p>
+    <div class="main-container">
+      <!-- cortes -->
+      <div class="cortes-section">
+        <h2 class="mb-4">Nuestros trabajos</h2>
+        <div class="cortes-grid">
+          <div class="corte-item">
+            <img
+              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F32%2F2a%2F34%2F322a34ddd2c7f64046b6256a46ef60f1.jpg&f=1&nofb=1&ipt=fcc0a68b46f9b069979ca4020c81b3853c71d4d23fb78eccb7ed6c088dafd3f2"
+              alt="Corte clásico" class="corte-img">
+          </div>
+          <div class="corte-item">
+            <img
+              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fformatoapa.com%2Fwp-content%2Fuploads%2F2020%2F12%2F534eea51f5f337c8780b23a96968ef9e.jpg&f=1&nofb=1&ipt=ae1e7d1c1f3dd4662bd41aca1ceab62438a01296db45f664d0f2e671b04fab23"
+              alt="Corte moderno" class="corte-img">
+          </div>
+          <div class="corte-item">
+            <img
+              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fbarberiaypeluqueriaparahombresenmadrid.com%2Fwp-content%2Fuploads%2F2021%2F02%2Fservicio-de-corte-de-pelo-degradado-alto-y-raya-en-la-barberia-yb-new-style-barber-shop.jpg&f=1&nofb=1&ipt=61b414b1b2f51cd5129b8dad52ce25313c915d985fbc5a49991186d66d52a226"
+              alt="Corte degradado" class="corte-img">
+          </div>
+          <div class="corte-item">
+            <img
+              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F08%2Fee%2Fca%2F08eecaae5f7271a07ea82cc4aa6d92a6.png&f=1&nofb=1&ipt=a0215f5b38dc2c511b4c4cb3a005c61316fcb629a3b40e68bdab8bc2cc470b0a"
+              alt="Corte degradado" class="corte-img">
+          </div>
+        </div>
       </div>
-      <div class="mapa-container">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6543.992716578106!2d-56.16176420000001!3d-34.906540899999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959f81a62c91d777%3A0x7bca3656982c072c!2sAv.%20Brasil%202345%2C%2011300%20Montevideo%2C%20Departamento%20de%20Montevideo!5e0!3m2!1ses!2suy!4v1751318129467!5m2!1ses!2suy"
-          width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+
+      <!-- derecha barberos -->
+      <div class="barberos-section">
+        <h2 class="mb-4">Nuestros barberos</h2>
+        <div class="acordeon-barberos">
+          <div class="acordeon-item">
+            <button class="acordeon-titulo">
+              <span>Iván Pereyra</span>
+              <i class="acordeon-icon">+</i>
+            </button>
+            <div class="acordeon-cuerpo">
+              <div class="barbero-info">
+                <img
+                  src="https://media.licdn.com/dms/image/v2/D4D03AQGzPyLNTUruZw/profile-displayphoto-shrink_800_800/B4DZSoP8lUHkAg-/0/1737989540995?e=1756339200&v=beta&t=EF9zqi9yKkYne75TlfHgGcepiSbZBwupXit4S0qV4gk"
+                  alt="Iván Pereyra" class="barbero-img">
+                <div class="barbero-details">
+                  <p class="barbero-descripcion">
+                    Especialista en cortes modernos y tendencias actuales. Con más de 45 años de experiencia,
+                    Iván se destaca por su atención al detalle y su capacidad para crear looks únicos.
+                  </p>
+                  <div class="barbero-stats">
+                    <p><strong>Calificación:</strong> ⭐⭐⭐⭐⭐</p>
+                    <p><strong>Especialidad:</strong> Cortes modernos y degradados</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="acordeon-item">
+            <button class="acordeon-titulo">
+              <span>Guillermo Salgado</span>
+              <i class="acordeon-icon">+</i>
+            </button>
+            <div class="acordeon-cuerpo">
+              <div class="barbero-info">
+                <img
+                  src="https://media.licdn.com/dms/image/v2/D4E03AQHdL9XbRwldrw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1715645901041?e=2147483647&v=beta&t=OFl-rheNFE7z4-bALzoDDMI9-eZJlnURQkcCzoBJE90"
+                  alt="Guillermo Salgado" class="barbero-img">
+                <div class="barbero-details">
+                  <p class="barbero-descripcion">
+                    Maestro en técnicas clásicas y tradicionales. Guillermo combina la elegancia de los
+                    estilos vintage con un toque contemporáneo, creando looks atemporales.
+                  </p>
+                  <div class="barbero-stats">
+                    <p><strong>Calificación:</strong> ⭐⭐⭐⭐</p>
+                    <p><strong>Especialidad:</strong> Cortes clásicos y elegantes</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="acordeon-item">
+            <button class="acordeon-titulo">
+              <span>Mauro Canto</span>
+              <i class="acordeon-icon">+</i>
+            </button>
+            <div class="acordeon-cuerpo">
+              <div class="barbero-info">
+                <img
+                  src="https://media.licdn.com/dms/image/v2/D4D03AQEoefiMtd17og/profile-displayphoto-shrink_200_200/B4DZbvYjpzH8AY-/0/1747772915161?e=2147483647&v=beta&t=RYKOKS2Ply7mDuMLcnhxkYemR66bqFhfDxzQZoreqTU"
+                  alt="Mauro Canto" class="barbero-img">
+                <div class="barbero-details">
+                  <p class="barbero-descripcion">
+                    Experto en barbas y tratamientos faciales. Mauro se especializa en crear
+                    looks completos que combinan perfectamente el corte de pelo con el diseño de barba.
+                  </p>
+                  <div class="barbero-stats">
+                    <p><strong>Calificación:</strong> ⭐⭐⭐⭐⭐</p>
+                    <p><strong>Especialidad:</strong> Barbas y tratamientos faciales</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de contacto -->
+    <section class="contacto-section mt-5 mb-5">
+      <div class="row">
+        <div class="col-12 text-center mb-4">
+          <h2>Contactanos</h2>
+          <p class="lead">¿Tenés alguna pregunta o querés hacer una consulta? ¡Escribinos!</p>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <div class="contacto-form-container">
+            <form id="contactoForm" class="contacto-form">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="nombre" class="form-label">Nombre *</label>
+                  <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="apellido" class="form-label">Apellido *</label>
+                  <input type="text" class="form-control" id="apellido" name="apellido" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="email" class="form-label">Email *</label>
+                  <input type="text" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="telefono" class="form-label">Teléfono</label>
+                  <input type="tel" class="form-control" id="telefono" name="telefono">
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="mensaje" class="form-label">Mensaje *</label>
+                <textarea class="form-control" id="mensaje" name="mensaje" rows="5"
+                  placeholder="Escribe tu mensaje aquí..." required></textarea>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg">Enviar Mensaje</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Modal confirmación de reserva -->
-  <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 id="confirmModalLabel" class="modal-title">Confirma tu turno</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4 text-center text-md-start">
+          <h3 class="footer-title">Barbería Malcorra</h3>
         </div>
-        <div class="modal-body">
-          <p>Revisa los datos de tu cita:</p>
-          <ul>
-            <li>Fecha: <strong><span id="confFecha"></span></strong></li>
-            <li>Hora: <strong><span id="confHora"></span></strong></li>
-            <li>Nombre: <strong><span id="confNombre"></span></strong></li>
-            <li>Contacto: <strong><span id="confContacto"></span></strong></li>
-          </ul>
+        <div class="col-md-4 text-center">
+          <div class="footer-contact">
+            <p class="mb-1">
+              <i class="footer-icon">📧</i>
+              <a href="mailto:info@barberiamalcorra.com" class="footer-link">info@barberiamalcorra.com</a>
+            </p>
+            <p class="mb-0">
+              <i class="footer-icon">📞</i>
+              <a href="tel:+5491112345678" class="footer-link">+54 9 11 1234-5678</a>
+            </p>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" id="confirmBtn" class="btn btn-primary">Confirmar</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <div class="col-md-4 text-center text-md-end">
+          <p class="footer-copyright mb-0">
+            © 2025 Barbería Malcorra™. Todos los derechos reservados.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal para ver la imagen ampliada -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 bg-transparent">
+        <div class="modal-body p-0">
+          <img id="modalImage" src="" alt="" class="img-fluid w-100 rounded" />
+        </div>
+        <div class="modal-footer border-0 justify-content-center">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Modal login admin -->
-  <div class="modal fade" id="adminLoginModal" tabindex="-1" aria-labelledby="adminLoginLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form id="adminLoginForm">
-          <div class="modal-header">
-            <h5 id="adminLoginLabel" class="modal-title">Acceso Administrador</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3">
-              <label for="adminPassword" class="form-label">Contraseña</label>
-              <input type="password" id="adminPassword" class="form-control" required autofocus>
-            </div>
-            <div id="adminLoginError" class="text-danger small d-none">
-              Contraseña incorrecta.
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="submit" class="btn btn-primary">Ingresar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal éxito de turno -->
-  <div class="modal fade" id="exitoTurnoModal" tabindex="-1" aria-labelledby="exitoTurnoModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 id="exitoTurnoModalLabel" class="modal-title">¡Turno confirmado!</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body">
-          <p>Tu cita ha sido registrada con éxito. ¡Te esperamos!</p>
-        </div>
-        <div class="modal-footer">
-          <button id="okBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scripts -->
+  <!-- jQuery: dependencias de jQuery UI y tu código -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+  <!-- Bootstrap Bundle JS: componentes interactivos de Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Logica en jQuery -->
   <script src="js/index.js"></script>
+
 </body>
 
 </html>
-
-<!--
-    <section class="contacto-container">
-      <div class="info-contacto">
-        <h2>Contacto</h2>
-        <p><strong>Dirección:</strong>Av. Brasil 2345, Montevideo Uruguay</p>
-        <p><strong>Teléfono:</strong> <a href="tel:+59899111222">+598 99 111 222</a></p>
-        <p><strong>Email:</strong> <a href="mailto:contacto@barberia.com">contacto@barberia.com</a></p>
-        <p><strong>Horario:</strong> Lunes a Sábado de 8:00 a 20:00</p>
-      </div>
-      <div class="mapa-container">
-       <iframe
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26269.403906603935!2d-56.1996619!3d-34.901112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDU0JzAzLjkiUyA1NsKwMTInMjUuNiJX!5e0!3m2!1ses-419!2suy!4v1719868741946!5m2!1ses-419!2suy"
-  width="100%"
-  height="300"
-  style="border:0;"
-  allowfullscreen=""
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade">
-</iframe>
-      </div>
-    </section>    -->
