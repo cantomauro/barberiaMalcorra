@@ -19,14 +19,14 @@
     <div class="flex-header container">
         <!-- Logo al lado del título -->
         <div class="title-section">
-            <img src="logo.png" alt="Logo de la barbería" class="logo-img">
+            <img src="img/logo.png" alt="Logo de la barbería" class="logo-img">
             <h1 class="h3 m-0">Agenda Barbería</h1>
         </div>
-        
+
         <!-- Usuario a la izquierda del botón -->
         <div class="admin-section">
-            
-            <button id="adminBtn" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#adminLoginModal"><img src="user.png" alt="Usuario Administrador" class="user-img">Administrar</button>
+
+            <button id="adminBtn" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#adminLoginModal"><img src="img/user.png" alt="Usuario Administrador" class="user-img">Administrar</button>
         </div>
     </div>
 </header>
@@ -60,7 +60,7 @@
             <label for="contacto" class="form-label">Teléfono o email</label>
             <input type="text" id="contacto" class="form-control" required>
           </div>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal">Reservar</button>
+          <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal">Reservar</button>
         </form>
       </div>
     </section>
@@ -140,6 +140,24 @@
     </div>
   </div>
 
+ <!-- Modal éxito de turno -->
+ <div class="modal fade" id="exitoTurnoModal" tabindex="-1" aria-labelledby="exitoTurnoModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 id="exitoTurnoModalLabel" class="modal-title">¡Turno confirmado!</h5>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+       </div>
+       <div class="modal-body">
+         <p>Tu cita ha sido registrada con éxito. ¡Te esperamos!</p>
+       </div>
+       <div class="modal-footer">
+         <button id="okBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
   <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
@@ -148,7 +166,7 @@
 </body>
 </html>
 
-<!--  
+<!--
     <section class="contacto-container">
       <div class="info-contacto">
         <h2>Contacto</h2>
@@ -169,4 +187,3 @@
 </iframe>
       </div>
     </section>    -->
- 
