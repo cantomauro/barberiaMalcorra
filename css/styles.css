@@ -178,8 +178,6 @@ textarea {
   /* Style adjustments for high resolution devices */
 }
 
-
-
 /* ==========================================================================
    Print styles.
    Inlined to avoid the additional HTTP request:
@@ -255,7 +253,6 @@ textarea {
   width: 8rem;
 }
 
-
 /* Fecha completamente ocupada en rojo DE MOMENTO NO FUNCA */
 .ui-datepicker .fully-booked a {
   background: #dc3545 !important; /* rojo */
@@ -269,7 +266,6 @@ textarea {
   background: rgba(179, 212, 252, 0.54) !important;
   color: #222 !important;
 }
-
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
@@ -306,43 +302,127 @@ textarea {
   }
 }
 
-/* Sección Cortes: flexbox de 2 columnas en desktop, 1 en móvil */
-.cortes-container {
+/* Altura de pantalla completa para cada sección */
+.pantalla {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  padding: 2rem;
+}
+
+/* Layout principal de calendario + formulario */
+.flex-dos-columnas {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding: 2rem;
   flex-wrap: wrap;
-  gap: 1rem;
 }
 
-/* Ajusta el tamaño de las cajas de cortes a 150×150 */
-.corte-box {
-  width: 150px;    /* antes 200px */
-  height: 150px;   /* antes 200px */
+/* Caja interna */
+.caja {
+  flex: 1;
+  min-width: 300px;
 }
 
-/* Asegura que la imagen rellene la caja sin salirse */
-.corte-box img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
+/* Header */
+.flex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.cortes-container .corte {
-  flex: 1 1 calc(50% - 1rem);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  border-radius: 0.5rem;
-  overflow: hidden;
+/* Contenedor principal centrado */
+.main-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 0 2rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.cortes-container .corte img {
-  display: block;
+/* Contenedor de calendario y formulario */
+.reserva-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Columnas internas */
+.reserva-col {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Formulario vertical */
+.form-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contacto */
+.contacto-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid #ccc;
+}
+
+/* Info */
+.info-contacto {
+  font-size: 1rem;
+}
+
+/* Enlaces */
+.info-contacto a {
+  text-decoration: none;
+  color: #0d6efd;
+}
+
+/* Mapa */
+.mapa-container iframe {
   width: 100%;
-  height: auto;
-  object-fit: cover;
+  height: 300px;
+  border-radius: 8px;
 }
 
-/* En pantallas muy pequeñas, una sola columna */
-@media (max-width: 576px) {
-  .cortes-container .corte {
-    flex: 1 1 100%;
-  }
+title-section,
+.admin-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+}
+
+.user-img {
+  width: 40px;
+  height: 40px;
+}
+
+.title-section {
+  display: flex !important;
+  align-items: center !important;
+  gap: 15px;
+  flex-direction: row !important;
+}
+
+.title-section h1 {
+  margin: 0 !important;
+  display: inline-block !important;
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
