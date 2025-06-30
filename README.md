@@ -32,7 +32,7 @@ barberiaMalcorra/
 │   ├── logo.png           # Logo de la barbería
 │   └── user-icon.png      # Icono de usuario para navbar
 ├── js/
-│   └── app.js             # Lógica frontend (fetch API, calendarios)
+│   └── index.js             # Lógica frontend (fetch API, calendarios)
 ├── index.html             # Página principal
 └── README.md              # Este archivo
 ```
