@@ -101,33 +101,80 @@ $(function(){
   const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
   let pendingCita = null;
 
-  // Envío del formulario: abre modal
+  // Envío del formulario: validar y mostrar modal
   $('#reservaForm').on('submit', function(e) {
     e.preventDefault();
+    
+    // Validar que se haya seleccionado una fecha
+    if (!selectedRawFecha) {
+      alert('Por favor selecciona una fecha');
+      return;
+    }
+    
+    // Validar que se haya seleccionado una hora
+    const horaSeleccionada = $('#hora').val();
+    if (!horaSeleccionada) {
+      alert('Por favor selecciona una hora');
+      return;
+    }
+    
+    // Validar nombre
+    const nombreIngresado = $('#nombre').val().trim();
+    if (!nombreIngresado) {
+      alert('Por favor ingresa tu nombre');
+      return;
+    }
+    
+    // Validar contacto
+    const contactoIngresado = $('#contacto').val().trim();
+    if (!contactoIngresado) {
+      alert('Por favor ingresa tu teléfono o email');
+      return;
+    }
+    
+    // Crear objeto de cita pendiente
     pendingCita = {
       fechaRaw: selectedRawFecha,
       fechaConDia: formatFechaConDia(selectedRawFecha),
-      hora: $('#hora').val(),
-      nombre: $('#nombre').val(),
-      contacto: $('#contacto').val()
+      hora: horaSeleccionada,
+      nombre: nombreIngresado,
+      contacto: contactoIngresado
     };
+    
+    // Mostrar datos en el modal
     $('#confFecha').text(pendingCita.fechaConDia);
     $('#confHora').text(pendingCita.hora);
     $('#confNombre').text(pendingCita.nombre);
     $('#confContacto').text(pendingCita.contacto);
+    
+    // Mostrar modal
     confirmModal.show();
   });
 
   // Confirmar reserva
   $('#confirmBtn').on('click', function() {
+    if (!pendingCita) {
+      alert('Error: No hay datos de cita para confirmar');
+      return;
+    }
+    
+    // Agregar la fecha formateada al objeto
     pendingCita.fecha = pendingCita.fechaConDia;
+    
+    // Guardar en localStorage
     const citas = JSON.parse(localStorage.getItem('citas')) || [];
     citas.push(pendingCita);
     localStorage.setItem('citas', JSON.stringify(citas));
+    
+    // Cerrar modal de confirmación
     confirmModal.hide();
+    
+    // Mostrar modal de éxito
     const exitoTurnoModal = new bootstrap.Modal(document.getElementById('exitoTurnoModal'));
     exitoTurnoModal.show();
-    $('#okBtn').on('click', function() {
+    
+    // Limpiar datos después de confirmar
+    $('#okBtn').off('click').on('click', function() {
       exitoTurnoModal.hide();
       // Programa la selección de hoy
       $dp.datepicker('setDate', new Date());
@@ -136,16 +183,18 @@ $(function(){
       // Limpia el formulario y el span
       $('#reservaForm')[0].reset();
       $('#fechaSeleccionada').text('–');
-      //No se resetea la hora
+      // Resetear variables
+      selectedRawFecha = null;
       pendingCita = null;
-    })
+      // Limpiar select de horas
+      $('#hora').empty().append('<option value="" disabled selected>Seleccioná una hora</option>');
+    });
   });
 
   //Boton de Reservas
   $('#reservasBtn').on('click', function(){
     window.location.href = 'reservas.html';
   });
-
 
   // Botón Administrar
   //  Modal de login de administrador
@@ -170,13 +219,14 @@ $(function(){
     }
   });
 
-// Cuando se muestre el modal, ponemos la imagen correcta
-var imageModalEl = document.getElementById('imageModal');
-imageModalEl.addEventListener('show.bs.modal', function (event) {
-  var trigger = event.relatedTarget;              // el <a> que disparó el modal
-  var src = trigger.getAttribute('data-bs-src');  // obtenemos la ruta de la imagen
-  var modalImg = imageModalEl.querySelector('#modalImage');
-  modalImg.src = src;                              // seteamos el src en el <img> del modal
-});
-
+  // Cuando se muestre el modal, ponemos la imagen correcta
+  var imageModalEl = document.getElementById('imageModal');
+  if (imageModalEl) {
+    imageModalEl.addEventListener('show.bs.modal', function (event) {
+      var trigger = event.relatedTarget;              // el <a> que disparó el modal
+      var src = trigger.getAttribute('data-bs-src');  // obtenemos la ruta de la imagen
+      var modalImg = imageModalEl.querySelector('#modalImage');
+      modalImg.src = src;                              // seteamos el src en el <img> del modal
+    });
+  }
 });
