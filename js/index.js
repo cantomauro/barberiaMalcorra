@@ -3,9 +3,11 @@ $(function () {
     $("#telefono")
       .css("cursor", "pointer")
       .hover(
+        // función para cuando pase el mouse
         function () {
           $(this).css("text-decoration", "underline");
         },
+        // función para cuando sale el mouse
         function () {
           $(this).css("text-decoration", "none");
         }
