@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Agenda Barbería</title>
+
+  <!-- Bootstrap CSS (solo para componentes, no grillas) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- jQuery UI CSS (datepicker) -->
+  <link href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" rel="stylesheet">
+
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="css/styles.css?v=3">
+</head>
+<body>
+ <header class="bg-dark text-white py-3 mb-4">
+    <div class="flex-header container">
+        <!-- Logo al lado del título -->
+        <div class="title-section">
+            <img src="img/logo.png" alt="Logo de la barbería" class="logo-img">
+            <h1 class="h3 m-0">Agenda Barbería</h1>
+        </div>
+
+        <!-- Usuario a la izquierda del botón -->
+        <div class="admin-section">
+            <button id="adminBtn" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#adminLoginModal"><img src="img/user.png" alt="Usuario Administrador" class="user-img">Administrar</button>
+            <a href="index.html" class="btn btn-outline-light">Home</a>
+        </div>
+    </div>
+</header>
+
+  <main class="main-flex">
+    <!-- Calendario y Formulario -->
+    <section class="reserva-container">
+      <div class="reserva-col">
+        <h2>1. Elige fecha</h2>
+        <div id="datepicker"></div>
+        <p class="mt-2">Fecha seleccionada: <span id="fechaSeleccionada">–</span></p>
+      </div>
+
+      <div class="reserva-col">
+        <h2>2. Reserva tu turno</h2>
+        <form id="reservaForm" class="form-flex">
+          <div class="mb-3">
+            <label for="hora" class="form-label">Hora</label>
+            <select id="hora" class="form-select" required>
+              <option value="" disabled selected>Seleccioná una hora</option>
+              <option>08:00</option>
+              <option>08:30</option>
+              <option>09:00</option>
+              <option>09:30</option>
+              <option>10:00</option>
+              <option>10:30</option>
+              <option>11:00</option>
+              <option>11:30</option>
+              <option>12:00</option>
+              <option>12:30</option>
+              <option>13:00</option>
+              <option>13:30</option>
+              <option>14:00</option>
+              <option>14:30</option>
+              <option>15:00</option>
+              <option>15:30</option>
+              <option>16:00</option>
+              <option>16:30</option>
+              <option>17:00</option>
+              <option>17:30</option>
+              <option>18:30</option>
+              <option>19:00</option>
+              <option>19:30</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" id="nombre" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="contacto" class="form-label">Teléfono o email</label>
+            <input type="text" id="contacto" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Reservar</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Sección de contacto con mapa -->
+    <section class="contacto-container">
+      <div class="info-contacto">
+        <h2>Contacto</h2>
+        <p><strong>Dirección:</strong> Av. Brasil 2345, Montevideo Uruguay</p>
+        <p><strong>Teléfono:</strong> <a href="tel:+59894488668">+598 94 488 668</a></p>
+        <p><strong>Email:</strong> <a href="mailto: Consultas@malcorra.com">Consultas@malcorra.com</a></p>
+        <p><strong>Horario:</strong> Lunes a Sábado de 8:00 a 20:00</p>
+      </div>
+      <div class="mapa-container">
+       <iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6543.992716578106!2d-56.16176420000001!3d-34.906540899999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959f81a62c91d777%3A0x7bca3656982c072c!2sAv.%20Brasil%202345%2C%2011300%20Montevideo%2C%20Departamento%20de%20Montevideo!5e0!3m2!1ses!2suy!4v1751318129467!5m2!1ses!2suy"
+  width="100%"
+  height="300"
+  style="border:0;"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal confirmación de reserva -->
+  <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="confirmModalLabel" class="modal-title">Confirma tu turno</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <p>Revisa los datos de tu cita:</p>
+          <ul>
+            <li>Fecha: <strong><span id="confFecha"></span></strong></li>
+            <li>Hora: <strong><span id="confHora"></span></strong></li>
+            <li>Nombre: <strong><span id="confNombre"></span></strong></li>
+            <li>Contacto: <strong><span id="confContacto"></span></strong></li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" id="confirmBtn" class="btn btn-primary">Confirmar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal login admin -->
+  <div class="modal fade" id="adminLoginModal" tabindex="-1" aria-labelledby="adminLoginLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="adminLoginForm">
+          <div class="modal-header">
+            <h5 id="adminLoginLabel" class="modal-title">Acceso Administrador</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="adminPassword" class="form-label">Contraseña</label>
+              <input type="password" id="adminPassword" class="form-control" required autofocus>
+            </div>
+            <div id="adminLoginError" class="text-danger small d-none">
+              Contraseña incorrecta.
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+ <!-- Modal éxito de turno -->
+ <div class="modal fade" id="exitoTurnoModal" tabindex="-1" aria-labelledby="exitoTurnoModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 id="exitoTurnoModalLabel" class="modal-title">¡Turno confirmado!</h5>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+       </div>
+       <div class="modal-body">
+         <p>Tu cita ha sido registrada con éxito. ¡Te esperamos!</p>
+       </div>
+       <div class="modal-footer">
+         <button id="okBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
+
+<!--
+    <section class="contacto-container">
+      <div class="info-contacto">
+        <h2>Contacto</h2>
+        <p><strong>Dirección:</strong>Av. Brasil 2345, Montevideo Uruguay</p>
+        <p><strong>Teléfono:</strong> <a href="tel:+59899111222">+598 99 111 222</a></p>
+        <p><strong>Email:</strong> <a href="mailto:contacto@barberia.com">contacto@barberia.com</a></p>
+        <p><strong>Horario:</strong> Lunes a Sábado de 8:00 a 20:00</p>
+      </div>
+      <div class="mapa-container">
+       <iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26269.403906603935!2d-56.1996619!3d-34.901112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDU0JzAzLjkiUyA1NsKwMTInMjUuNiJX!5e0!3m2!1ses-419!2suy!4v1719868741946!5m2!1ses-419!2suy"
+  width="100%"
+  height="300"
+  style="border:0;"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+      </div>
+    </section>    -->
