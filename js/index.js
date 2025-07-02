@@ -21,8 +21,6 @@ $(function () {
   });
 
   $('#contactoForm').on('submit', function (e) {
-    // e.preventDefault(); // para que no se recargue la página
-
     const formData = {
       nombre: $('#nombre').val(),
       apellido: $('#apellido').val(),
