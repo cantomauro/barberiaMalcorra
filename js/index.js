@@ -1,4 +1,28 @@
 $(function () {
+  $(document).ready(function () {
+    $("#telefono")
+      .css("cursor", "pointer")
+      .hover(
+        function () {
+          $(this).css("text-decoration", "underline");
+        },
+        function () {
+          $(this).css("text-decoration", "none");
+        }
+      );
+
+    $("#email")
+      .css("cursor", "pointer")
+      .hover(
+        function () {
+          $(this).css("text-decoration", "underline");
+        },
+        function () {
+          $(this).css("text-decoration", "none");
+        }
+      );
+  });
+
   $('.acordeon-titulo').on('click', function () {
     const $titulo = $(this);
     const $cuerpo = $titulo.next('.acordeon-cuerpo');
@@ -38,4 +62,12 @@ $(function () {
 
     this.reset();
   });
+
+  $('#telefono').on('click', function () {
+    window.location.href = 'tel:+59894488668';
+  })
+
+  $('#email').on('click', function () {
+    window.location.href = 'mailto: consultas@malcorra.com'
+  })
 });
