@@ -108,7 +108,7 @@ $.datepicker.regional['es'] = {
   yearSuffix: ''
 };
 
-// Convierte "dd-mm-aaaa" en "DíaSemana, dd-mm-aaaa"
+// de "dd-mm-aaaa" a "DíaSemana, dd-mm-aaaa"
 function formatFechaConDia(fechaStr) {
   const [d, m, a] = fechaStr.split('-').map(n => parseInt(n, 10));
   const dateObj = new Date(a, m - 1, d);
@@ -116,8 +116,10 @@ function formatFechaConDia(fechaStr) {
   return diaSemana.charAt(0).toUpperCase() + diaSemana.slice(1) + ', ' + fechaStr;
 }
 
+//----------------------------------------------------
+
 $(function(){
-  // Horas disponibles
+  // horas disponibles
   const timesList = [
     '09:00','09:30','10:00','10:30'
   ];
@@ -184,34 +186,34 @@ $(function(){
   // Envío del formulario: validar y mostrar modal
   $('#reservaForm').on('submit', function(e) {
     e.preventDefault();
-    
+
     // Validar que se haya seleccionado una fecha
     if (!selectedRawFecha) {
       alert('Por favor selecciona una fecha');
       return;
     }
-    
+
     // Validar que se haya seleccionado una hora
     const horaSeleccionada = $('#hora').val();
     if (!horaSeleccionada) {
       alert('Por favor selecciona una hora');
       return;
     }
-    
+
     // Validar nombre
     const nombreIngresado = $('#nombre').val().trim();
     if (!nombreIngresado) {
       alert('Por favor ingresa tu nombre');
       return;
     }
-    
+
     // Validar contacto
     const contactoIngresado = $('#contacto').val().trim();
     if (!contactoIngresado) {
       alert('Por favor ingresa tu teléfono o email');
       return;
     }
-    
+
     // Crear objeto de cita pendiente
     pendingCita = {
       fechaRaw: selectedRawFecha,
@@ -220,13 +222,13 @@ $(function(){
       nombre: nombreIngresado,
       contacto: contactoIngresado
     };
-    
+
     // Mostrar datos en el modal
     $('#confFecha').text(pendingCita.fechaConDia);
     $('#confHora').text(pendingCita.hora);
     $('#confNombre').text(pendingCita.nombre);
     $('#confContacto').text(pendingCita.contacto);
-    
+
     // Mostrar modal
     confirmModal.show();
   });
@@ -237,22 +239,22 @@ $(function(){
       alert('Error: No hay datos de cita para confirmar');
       return;
     }
-    
+
     // Agregar la fecha formateada al objeto
     pendingCita.fecha = pendingCita.fechaConDia;
-    
+
     // Guardar en localStorage
     const citas = JSON.parse(localStorage.getItem('citas')) || [];
     citas.push(pendingCita);
     localStorage.setItem('citas', JSON.stringify(citas));
-    
+
     // Cerrar modal de confirmación
     confirmModal.hide();
-    
+
     // Mostrar modal de éxito
     const exitoTurnoModal = new bootstrap.Modal(document.getElementById('exitoTurnoModal'));
     exitoTurnoModal.show();
-    
+
     // Limpiar datos después de confirmar
     $('#okBtn').off('click').on('click', function() {
       exitoTurnoModal.hide();

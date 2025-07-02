@@ -452,12 +452,6 @@ textarea {
 }
 
 
-/* Fecha completamente ocupada en rojo */
-.ui-datepicker .fully-booked a {
-  background: #dc3545 !important; /* rojo */
-  color: #fff !important;
-}
-
 /* Resalta en amarillo el día actual (ya sea enlace o span) y la fecha seleccionada */
 .ui-datepicker .ui-datepicker-current-day a,
 .ui-datepicker .ui-datepicker-current-day span,
@@ -468,9 +462,8 @@ textarea {
 
 
 /* RESPONSIVE
-/* Responsive: apilar calendario y formulario en pantallas <768px */
+/* Responsive: apilar calendario y formulario */
 @media (max-width: 768px) {
-  /* La grilla de Bootstrap .row .col-md-6 deja de aplicar col-md-6 */
   .row.g-4 {
     display: flex;
     flex-direction: column;
@@ -481,9 +474,8 @@ textarea {
   }
 }
 
-/* Botones full-width en móvil */
+/* Botones full-width en celular  */
 @media (max-width: 576px) {
-  /* Administrar / Salir en header: ocupan toda la fila */
   .btn-wrapper {
     width: 100% !important;
   }
@@ -491,7 +483,7 @@ textarea {
     width: 100%;
   }
 
-  /* Botones principales (Reservar, Confirmar, etc.) */
+  /* Botones principales (Reservar, Confirmar, ...) */
   button.btn {
     width: 100%;
     margin-bottom: 0.5rem;
@@ -523,7 +515,7 @@ textarea {
   flex-wrap: wrap;
 }
 
-/* Caja interna */
+
 .caja {
   flex: 1;
   min-width: 300px;

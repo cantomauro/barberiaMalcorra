@@ -21,7 +21,7 @@ $(function(){
     const $tbody = $('#tablaCitas tbody');
     $tbody.empty(); // Limpiamos filas anteriores
 
-    // Iteramos sobre cada cita y creamos una fila
+    // Iterar sobre cada cita y crear una fila
     citas.forEach((cita, index) => {
       const $tr = $(`
         <tr>
@@ -67,10 +67,8 @@ $(function(){
   });
 
 
-
-
   $('#confirmDeleteBtn').on('click', function(){
-    // Si hay un índice, borramos y re-renderizamos
+    // Si hay un índice, borramos y renderizamos d nuevo
     if (deleteIndex !== null) {
       citas.splice(deleteIndex, 1);
       localStorage.setItem('citas', JSON.stringify(citas));
