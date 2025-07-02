@@ -282,3 +282,350 @@ html {
     margin: 1.5rem auto;
   }
 }
+
+----------------------------
+
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.hidden,
+[hidden] {
+  display: none !important;
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  /* 1 */
+}
+
+.visually-hidden.focusable:active,
+.visually-hidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  white-space: inherit;
+  width: auto;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.clearfix::before,
+.clearfix::after {
+  content: "";
+  display: table;
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 1.25dppx),
+  (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: #fff !important;
+    color: #000 !important;
+    /* Black prints faster */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+
+}
+
+
+.btn-wrapper {
+  display: flex;               
+  justify-content: center;    
+  align-items: center;       
+  width: 8rem;                
+}
+
+
+/* Fecha completamente ocupada en rojo */
+.ui-datepicker .fully-booked a {
+  background: #dc3545 !important; /* rojo */
+  color: #fff !important;
+}
+
+/* Resalta en amarillo el día actual (ya sea enlace o span) y la fecha seleccionada */
+.ui-datepicker .ui-datepicker-current-day a,
+.ui-datepicker .ui-datepicker-current-day span,
+.ui-datepicker .ui-state-active a {
+  background: #b3d4fc !important;
+  color: #222 !important;
+}
+
+
+/* RESPONSIVE
+/* Responsive: apilar calendario y formulario en pantallas <768px */
+@media (max-width: 768px) {
+  /* La grilla de Bootstrap .row .col-md-6 deja de aplicar col-md-6 */
+  .row.g-4 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* igual que g-4 */
+  }
+  .row.g-4 > .col-md-6 {
+    width: 100%;
+  }
+}
+
+/* Botones full-width en móvil */
+@media (max-width: 576px) {
+  /* Administrar / Salir en header: ocupan toda la fila */
+  .btn-wrapper {
+    width: 100% !important;
+  }
+  .btn-wrapper .btn {
+    width: 100%;
+  }
+
+  /* Botones principales (Reservar, Confirmar, etc.) */
+  button.btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .modal-dialog {
+    max-width: 95%;
+    margin: 1.5rem auto;
+  }
+}
+
+/* Altura de pantalla completa para cada sección */
+.pantalla {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  padding: 2rem;
+}
+
+/* Layout principal de calendario + formulario */
+.flex-dos-columnas {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Caja interna */
+.caja {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Header */
+.flex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Contenedor principal centrado */
+.main-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 0 2rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Contenedor de calendario y formulario */
+.reserva-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Columnas internas */
+.reserva-col {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Formulario vertical */
+.form-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contacto */
+.contacto-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid #ccc;
+}
+
+/* Info */
+.info-contacto {
+  font-size: 1rem;
+}
+
+/* Enlaces */
+.info-contacto a {
+  text-decoration: none;
+  color: #0d6efd;
+}
+
+/* Mapa */
+.mapa-container iframe {
+  width: 100%;
+  height: 300px;
+  border-radius: 8px;
+}
+
+
+title-section, .admin-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+}
+
+.user-img {
+    width: 40px;
+    height: 40px;
+}
+
+.title-section {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px;
+    flex-direction: row !important;
+}
+
+.title-section h1 {
+    margin: 0 !important;
+    display: inline-block !important;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
